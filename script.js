@@ -1,22 +1,39 @@
-let layout = '2x2';
-
-function switchLayout() {
+document.addEventListener('DOMContentLoaded', () => {
   const matrix = document.getElementById('matrix');
-  if (layout === '2x2') {
-    layout = '3x3';
-    matrix.className = 'matrix-3x3';
-    // Additional logic to change the matrix to 3x3
-  } else {
-    layout = '2x2';
-    matrix.className = 'matrix-2x2';
-    // Additional logic to change the matrix back to 2x2
-  }
-}
+  const toggleMatrixButton = document.getElementById('toggleMatrix');
 
-function generatePDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  doc.text("Eisenhower Matrix", 10, 10);
-  // Additional logic to populate the matrix into the PDF
-  doc.save("Eisenhower-Matrix.pdf");
-}
+  const renderMatrix = (rows, cols) => {
+    matrix.innerHTML = '';
+    matrix.className = `matrix-${rows}x${cols}`;
+
+    for (let i = 0; i <= rows; i++) {
+      for (let j = 0; j <= cols; j++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        
+        if (i === 0 || j === 0) {
+          cell.className += ' title';
+          cell.contentEditable = false;
+        } else {
+          cell.contentEditable = true;
+          cell.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              this.innerHTML += '<br>• ';
+            }
+          });
+        }
+        
+        matrix.appendChild(cell);
+      }
+    }
+  };
+
+  // Initial 2x2 matrix
+  renderMatrix(2, 2);
+
+  toggleMatrixButton.addEventListener('click', () => {
+    const is2x2 = matrix.className === 'matrix-2x2';
+    renderMatrix(is2x2 ? 3 : 2, is2x2 ? 3 : 2);
+  });
+});

@@ -2,12 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Eisenhower Matrix</h1>
+
+  <button id="toggleMatrix">Switch Matrix</button>
+
+  <div id="matrix" class="matrix-2x2"> 
+<!-- 2x2 Matrix -->
+<div class="matrix matrix-2x2" id="matrix2x2">
+  <div class="cell title">Urgent</div><div class="cell title">Not Urgent</div>
+  <div class="cell title">Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+  <div class="cell title">Not Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+</div>
+
+<!-- 3x3 Matrix -->
+<div class="matrix matrix-3x3" id="matrix3x3" style="display:none;">
+  <div class="cell title"></div><div class="cell title">Urgent</div><div class="cell title">Upcoming</div><div class="cell title">Later</div>
+  <div class="cell title">Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+  <div class="cell title">Less Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+  <div class="cell title">Unimportant</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>Eisenhower Matrix</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Eisenhower Matrix</h1>
-  
+
   <button onclick="switchLayout()">Switch to 3x3</button>
 
 <!-- 2x2 Matrix -->
