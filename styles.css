@@ -1,19 +1,33 @@
-.matrix-2x2, .matrix-3x3 {
-    display: grid;
-    gap: 16px;
-  }
-  
-  .matrix-2x2 {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .matrix-3x3 {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  
-  .cell {
-    border: 1px solid #ccc;
-    padding: 20px;
-    text-align: center;
-  }
-  
+.matrix, .matrix-2x2, .matrix-3x3 {
+  display: grid;
+  gap: 16px;
+}
+
+.matrix {
+  gap: 0px; /* or remove this line if you want to maintain the 16px gap */
+}
+
+.matrix-2x2 {
+  grid-template-columns: auto 1fr 1fr; /* Adding an auto column for titles */
+  grid-template-rows: auto 1fr 1fr; /* Adding an auto row for titles */
+}
+
+.matrix-3x3 {
+  grid-template-columns: auto 1fr 1fr 1fr; /* Adding an auto column for titles */
+  grid-template-rows: auto 1fr 1fr 1fr; /* Adding an auto row for titles */
+}
+
+.cell {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.cell.title {
+  background-color: #f0f0f0;
+}
+
+.cell.editable:focus {
+  outline: none;
+}
+
