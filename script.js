@@ -8,17 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const rows = is3x3 ? 3 : 4;
     const cols = is3x3 ? 3 : 4;
 
-    const titles3x3 = [['My Priorities', 'Urgent', 'Upcoming'], ['Important', '', ''], ['Unimportant', '', '']];
-    const titles4x4 = [['My Priorities', 'Urgent', 'Upcoming', 'Later'], ['Important', '', '', ''], ['Less Important', '', '', ''], ['Unimportant', '', '', '']];
-
+    const titles3x3 = [['My Priorities', 'Urgent', 'Upcoming'], ['Important', '• ', '• '], ['Unimportant', '• ', '• ']];
+    const titles4x4 = [['My Priorities', 'Urgent', 'Upcoming', 'Later'], ['Important', '• ', '• ', '• '], ['Less Important', '• ', '• ', '• '], ['Unimportant', '• ', '• ', '• ']];
     const titles = is3x3 ? titles3x3 : titles4x4;
+
     matrix.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         const cell = document.createElement('div');
         cell.className = 'cell';
-        cell.innerHTML = titles[i][j] || '';
+        cell.innerHTML = titles[i][j] || '• ';
 
         if (i === 0 || j === 0) {
           cell.className += ' title';
@@ -26,12 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           cell.contentEditable = true;
           
-          cell.addEventListener('focus', function(e) {
-            if (cell.innerHTML === '') {
-              cell.innerHTML = '• ';
-            }
-          });
-
           cell.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
               e.preventDefault();
@@ -40,8 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
               const br = document.createElement("br");
               const textNode = document.createTextNode('• ');
 
-            // Asynchronously execute this block
-            setTimeout(() => {
               range.collapse(true);
               range.insertNode(br);
               range.setStartAfter(br);
@@ -50,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
               range.setEndAfter(textNode);
               selection.removeAllRanges();
               selection.addRange(range);
-            }, 10);
             }
           });
         }
