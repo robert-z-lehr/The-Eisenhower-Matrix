@@ -1,15 +1,5 @@
-.matrix, .matrix-2x2, .matrix-3x3 {
+#matrix {
   display: grid;
-}
-
-.matrix-2x2 {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-}
-
-.matrix-3x3 {
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
 }
 
 .cell {
