@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Eisenhower Matrix</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Eisenhower Matrix</h1>
+  <button onclick="switchLayout()">Switch to 3x3</button>
+  <div id="matrix" class="matrix-2x2">
+    <div class="cell">Urgent & Important</div>
+    <div class="cell">Urgent & Not Important</div>
+    <div class="cell">Not Urgent & Important</div>
+    <div class="cell">Not Urgent & Not Important</div>
+  </div>
+  <button onclick="generatePDF()">Download PDF</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+.matrix-2x2, .matrix-3x3 {
+    display: grid;
+    gap: 16px;
+  }
+  
+  .matrix-2x2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .matrix-3x3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .cell {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+  
