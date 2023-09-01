@@ -8,40 +8,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const rows = is3x3 ? 3 : 4;
     const cols = is3x3 ? 3 : 4;
 
-    const titles3x3 = [['My Priorities', 'Urgent', 'Upcoming'], ['Important', '• ', '• '], ['Unimportant', '• ', '• ']];
-    const titles4x4 = [['My Priorities', 'Urgent', 'Upcoming', 'Later'], ['Important', '• ', '• ', '• '], ['Less Important', '• ', '• ', '• '], ['Unimportant', '• ', '• ', '• ']];
-    const titles = is3x3 ? titles3x3 : titles4x4;
+    const titles3x3 = [['My Priorities', 'Urgent', 'Upcoming'], ['Important', '', ''], ['Unimportant', '', '']];
+    const titles4x4 = [['My Priorities', 'Urgent', 'Upcoming', 'Later'], ['Important', '', '', ''], ['Less Important', '', '', ''], ['Unimportant', '', '', '']];
 
+    const titles = is3x3 ? titles3x3 : titles4x4;
     matrix.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         const cell = document.createElement('div');
         cell.className = 'cell';
-        cell.innerHTML = titles[i][j] || '• ';
+        cell.innerHTML = titles[i][j] || '<input type="checkbox"> ';
 
         if (i === 0 || j === 0) {
           cell.className += ' title';
           cell.contentEditable = false;
         } else {
           cell.contentEditable = true;
-          
           cell.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
               e.preventDefault();
-              const selection = window.getSelection();
-              const range = selection.getRangeAt(0);
-              const br = document.createElement("br");
-              const textNode = document.createTextNode('• ');
+              const checkbox = document.createElement('input');
+              checkbox.type = 'checkbox';
+              checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                  this.nextSibling.style.textDecoration = 'line-through';
+                } else {
+                  this.nextSibling.style.textDecoration = 'none';
+                }
+              });
 
-              range.collapse(true);
-              range.insertNode(br);
-              range.setStartAfter(br);
-              range.insertNode(textNode);
-              range.setStartAfter(textNode);
-              range.setEndAfter(textNode);
-              selection.removeAllRanges();
-              selection.addRange(range);
+              const textNode = document.createElement('span');
+              textNode.innerHTML = ' ';
+
+              const br = document.createElement('br');
+              cell.appendChild(br);
+              cell.appendChild(checkbox);
+              cell.appendChild(textNode);
             }
           });
         }
