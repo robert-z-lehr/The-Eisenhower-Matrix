@@ -1,70 +1,64 @@
+<!-- This line declares the document type and version of HTML being used. -->
 <!DOCTYPE html>
+
+<!-- The HTML document starts here. 'lang="en"' specifies that English is the language used. -->
 <html lang="en">
+
+<!-- The head section contains meta information and links to external resources like stylesheets and scripts. -->
 <head>
+
+  <!-- This line sets the character encoding for the document. UTF-8 is a widely-used character encoding. -->
   <meta charset="UTF-8">
+
+  <!-- This line links to an external CSS file named 'styles.css' that contains the styling for the webpage. -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- This line links to an external JavaScript library named 'jsPDF' that allows PDF generation. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<!-- The head section ends here. -->
 </head>
+
+<!-- The body section starts here. This is where the content of the webpage goes. -->
 <body>
+
+  <!-- This line creates a level 1 heading with the text 'Eisenhower Matrix'. -->
   <h1>Eisenhower Matrix</h1>
 
+  <!-- This line creates a button that, when clicked, will switch the matrix layout. -->
   <button id="toggleMatrix">Switch Matrix</button>
 
-  <div id="matrix" class="matrix-2x2"> 
-<!-- 2x2 Matrix -->
-<div class="matrix matrix-2x2" id="matrix2x2">
-  <div class="cell title">Urgent</div><div class="cell title">Later</div>
-  <div class="cell title">Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-  <div class="cell title">Unimportant</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-</div>
+  <!-- This line creates a button that, when clicked, will download the matrix as a PDF. -->
+  <button id="downloadMatrix">Download Matrix</button>
 
-<!-- 3x3 Matrix -->
-<div class="matrix matrix-3x3" id="matrix3x3" style="display:none;">
-  <div class="cell title"></div><div class="cell title">Urgent</div><div class="cell title">Upcoming</div><div class="cell title">Later</div>
-  <div class="cell title">Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-  <div class="cell title">Less Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-  <div class="cell title">Unimportant</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+  <!-- This line starts a 'div' container for the matrix. It has a class 'matrix-2x2' for styling. -->
+  <div id="matrix" class="matrix-2x2"> 
+
+    <!-- This section is for the 2x2 matrix layout. -->
+    <div class="matrix matrix-2x2" id="matrix2x2">
+      <!-- These lines create the title cells for the 2x2 matrix. -->
+      <div class="cell title">Urgent</div><div class="cell title">Later</div>
+      <div class="cell title">Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+      <div class="cell title">Unimportant</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+    </div>
+
+    <!-- This section is for the 3x3 matrix layout but is initially hidden ('display:none'). -->
+    <div class="matrix matrix-3x3" id="matrix3x3" style="display:none;">
+      <!-- These lines create the title cells for the 3x3 matrix. -->
+      <div class="cell title"></div><div class="cell title">Urgent</div><div class="cell title">Upcoming</div><div class="cell title">Later</div>
+      <div class="cell title">Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+      <div class="cell title">Less Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+      <div class="cell title">Unimportant</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
+    </div>
+
+  <!-- The 'div' container for the matrix ends here. -->
   </div>
 
+  <!-- This line links to an external JavaScript file named 'script.js' that contains the functionality for the webpage. -->
   <script src="script.js"></script>
 
+<!-- The body section ends here. -->
 </body>
-</html>
 
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Eisenhower Matrix</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>Eisenhower Matrix</h1>
-
-  <button onclick="switchLayout()">Switch to 3x3</button>
-
-<!-- 2x2 Matrix -->
-<div class="matrix matrix-2x2" id="matrix2x2">
-  <div class="cell title">Urgent</div><div class="cell title">Not Urgent</div>
-  <div class="cell title">Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-  <div class="cell title">Not Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-</div>
-
-<!-- 3x3 Matrix -->
-<div class="matrix matrix-3x3" id="matrix3x3" style="display:none;">
-  <div class="cell title"></div><div class="cell title">Urgent</div><div class="cell title">Upcoming</div><div class="cell title">Later</div>
-  <div class="cell title">Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-  <div class="cell title">Less Important</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-  <div class="cell title">Unimportant</div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div><div contenteditable="true" class="cell editable"></div>
-</div>
-
-  <button onclick="generatePDF()">Download PDF</button>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-  <script src="script.js"></script>
-</body>
+<!-- The HTML document ends here. -->
 </html>
